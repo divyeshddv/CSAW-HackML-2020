@@ -1,5 +1,5 @@
 ##  Evaluating the Repaired Model
-2. To evaluate the repaired model, execute `eval.py` by running:  
+2. To evaluate the repaired model, execute `eval_repaired.py` by running:  
 `python3 eval_repaired.py <clean validation data directory> <test data directory> <model directory>`.
 
 E.g., `python3 eval_repaired.py data/clean_validation_data.h5 data/sunglasses_poisoned_data.h5  models/sunglasses_bd_net.h5`.  to test on the sunglasses poisoned data
