@@ -44,7 +44,7 @@ def main():
     label_p = []
     print(np.array([x_testb[0]]).shape)
     print(y_testb.shape)
-    
+    totalp = 0
     for i in range(len(x_testb)):
         if i%1000==0:
             print(i)
@@ -55,6 +55,7 @@ def main():
         preds = np.argmax(bd_model.predict(x_added), axis=1)
         if len(np.unique(preds)) < len(preds)/2:
             label_p.append(n+1)
+            totalp+=1
         else:
             label_p.append(np.argmax(bd_model.predict(np.array([x_testb[i]])), axis=1)[0])
             
@@ -63,7 +64,8 @@ def main():
 
     label_b = np.argmax(bd_model.predict(x_testb), axis=1)
     class_accub = np.mean(np.equal(label_b, y_testb))*100
-    
+    print(totalp, " images classified as poisonous")
+    print(len(x_testb)-totalp, " images classified as clean")
     print('Network Classification accuracy on dataset: ', backdoored_data_filename ," = ", class_accub)
     print('Repaired Network Classification accuracy on dataset: ', backdoored_data_filename ," = ", class_accu)
     
